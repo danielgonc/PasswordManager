@@ -3,7 +3,9 @@ import * as passwordManagerController from "../controllers/passwordManagerContro
 
 const router = express.Router();
 
-router.post("/add-password", passwordManagerController.addPassword);
-router.get("/*", passwordManagerController.fetchPasswords);
+router.post("/password-cards", passwordManagerController.addPassword);
+router.get("/password-cards", passwordManagerController.fetchPasswords);
+router.put("/password-cards/:id", passwordManagerController.updatePassword);
+router.delete("/password-cards/:id", passwordManagerController.deletePassword);
 
 export default router;

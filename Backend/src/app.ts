@@ -20,7 +20,7 @@ app.use(cors());
 app.use(helmet());
 
 // PasswordManager routes
-app.use("/password-manager", passwordManagerRoutes);
+app.use("/", passwordManagerRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
