@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PasswordsService } from './passwords.service';
 import { NgFor, NgIf } from '@angular/common';
+import { CardsComponent } from './cards/cards.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, NgFor, NgIf],
+  imports: [RouterOutlet, NavbarComponent, NgFor, NgIf, CardsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
@@ -19,18 +20,9 @@ export class AppComponent {
 
   fetchPasswords(): void {
     this.passwordService.getPasswords().subscribe((data: any) => {
+      console.log(data);
       this.passwords = data;
     });
-  }
-
-  parseFavicon(url: string): string {
-    if (url.indexOf('http') > -1) {
-      const { hostname } = new URL(url);
-
-      return `//${hostname}/favicon.ico`;
-    }
-
-    return "";
   }
 
   ngOnInit() {

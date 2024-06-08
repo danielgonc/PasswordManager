@@ -14,4 +14,16 @@ export class PasswordsService {
   getPasswords(): Observable<any> {
     return this.http.get(`${this.baseAddress}/password-cards`, { headers: { Accept: 'application/json' } });
   }
+
+  addPassword(body: any): Observable<any> {
+    return this.http.post(`${this.baseAddress}/password-cards`, body, { headers: { Accept: 'application/json' } })
+  }
+
+  updatePassword(id: string, body: any): Observable<any> {
+    return this.http.put(`${this.baseAddress}/password-cards/${id}`, body, { headers: { Accept: 'application/json' } });
+  }
+
+  deletePassword(id: string): Observable<any> {
+    return this.http.delete(`${this.baseAddress}/password-cards/${id}`, { headers: { Accept: 'application/json' } });
+  }
 }
