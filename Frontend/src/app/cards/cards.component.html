@@ -1,5 +1,5 @@
 <div (click)="openForm()" *ngIf="showAddOption; else content"
-    class="rounded-md h-full bg-gray-300 hover:bg-gray-400 items-center justify-center flex flex-col cursor-pointer transition-all">
+    class="rounded-md h-full bg-gray-300 hover:bg-gray-400 items-center justify-center flex flex-col cursor-pointer transition-all h-full">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-11">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -7,9 +7,9 @@
     <p>Add new password</p>
 </div>
 <ng-template #content>
-    <div class="group flex flex-col flex-1 hover:shadow-lg rounded-md overflow-hidden">
+    <div class="group flex flex-col flex-1 hover:shadow-lg rounded-md overflow-hidden h-full">
         <div class="align-middle justify-center flex flex-grow bg-white py-4 group-hover:bg-slate-300 transition-all">
-            <img *ngIf="parseFavicon(password.url)" [src]="parseFavicon(password.url)" class="min-w-8 max-w-8">
+            <img *ngIf="parseFavicon(password.url)" [src]="parseFavicon(password.url)" class="min-w-8">
             <svg *ngIf="!parseFavicon(password.url)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -17,11 +17,11 @@
             </svg>
         </div>
         <div class="bg-gray-800 group-hover:bg-gray-700 p-2 flex flex-row mt-auto items-center justify-between">
-            <span>
-                <p class="text-base text-white mb-0">
+            <span class="w-1/2">
+                <p class="text-sm text-white mb-0 truncate text-ellipsis">
                     {{password.name}}
                 </p>
-                <p class="text-sm text-white mb-0">
+                <p class="text-xs text-white mb-0 truncate text-ellipsis">
                     {{password.username}}
                 </p>
             </span>
@@ -33,7 +33,7 @@
                             d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                     </svg>
                 </button>
-                <button class="btn" (click)="openForm()">
+                <button class="btn" (click)="copyInputMessage(password.password)">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6 cursor-pointer">
                         <path stroke-linecap="round" stroke-linejoin="round"

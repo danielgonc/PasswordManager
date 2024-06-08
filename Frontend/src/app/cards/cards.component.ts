@@ -8,15 +8,7 @@ import { FormComponent } from '../form/form.component';
   standalone: true,
   imports: [NgIf, FormComponent],
   templateUrl: './cards.component.html',
-  styleUrl: './cards.component.sass',
-  animations: [
-    trigger('openPanel', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0.95)'}),
-        animate('500ms', style({opacity: 0, transform: 'scale(0.95)'}))
-      ])
-    ])
-  ]
+  styleUrl: './cards.component.sass'
 })
 export class CardsComponent {
   @Input() password!: any;
@@ -46,6 +38,22 @@ export class CardsComponent {
 
   openForm() {
     this.showForm = true;
+  }
+
+  copyInputMessage(val : string){
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+
+    window.alert('Password copied to clipboard');
   }
 
   closeModalAndRefresh(refresh: boolean) {
